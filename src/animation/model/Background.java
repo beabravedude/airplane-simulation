@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Background implements Animatable {
     @Override
-    public void render(Graphics g, int frameWidth, int frameHeight) {
+    public void render(Graphics g, int frameWidth, int frameHeight, double time, double speed) {
         g.setColor(Color.CYAN);
         g.fillRect(0, 0, frameWidth, frameHeight);
         int cloudTopOffset = frameHeight / 25;
@@ -37,7 +37,9 @@ public class Background implements Animatable {
     }
 
     @Override
-    public void move() {
+    public void move(double speed, int frameWidth, int frameHeight) {
 
     }
+
+
 }

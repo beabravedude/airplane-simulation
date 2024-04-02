@@ -2,13 +2,10 @@ package animation;
 
 import animation.model.Airplane;
 import animation.model.Background;
-import animation.model.DataDisplay;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Animation implements ActionListener {
 
@@ -33,16 +30,14 @@ public class Animation implements ActionListener {
         this.afterRender = afterRender;
 
         this.background = new Background();
-        this.airplane = new Airplane();
+        this.airplane = new Airplane(frameWidth, frameHeight);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        background.render(g, frameWidth, frameHeight);
-        airplane.render(g, frameWidth, frameHeight);
-        airplane.move();
-        Animatable dataDisplay = new DataDisplay(10000, 500, (int) this.time);
-        dataDisplay.render(g, frameWidth, frameHeight);
+        background.render(g, frameWidth, frameHeight, this.time, this.speed);
+        airplane.render(g, frameWidth, frameHeight, this.time, this.speed);
+        airplane.move(speed, this.frameWidth, this.frameHeight);
         this.time += this.speed;
         afterRender.run();
     }

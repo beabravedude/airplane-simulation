@@ -4,8 +4,8 @@ import java.awt.*;
 
 public interface Animatable {
 
-    void render(Graphics g, int frameWidth, int frameHeight);
+    void render(Graphics g, int frameWidth, int frameHeight, double time, double speed);
 
-    void move();
+    void move(double speed, int frameWidth, int frameHeight);
 
 }
