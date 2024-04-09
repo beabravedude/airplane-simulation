@@ -7,16 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Background implements Animatable {
-
-
-    private int CLOUD_POSITION = 0;
-
     private final List<Cloud> clouds = new ArrayList<>();
 
     @Override
     public void render(Graphics g, int frameWidth, int frameHeight, double time, double speed) {
-
-        CLOUD_POSITION += (int) (Math.random() * 2);
 
         for (int i = 0; i < frameHeight; i++) {
             g.setColor(new Color(0, 255, 255 - i / 10));
