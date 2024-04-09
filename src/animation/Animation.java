@@ -37,6 +37,7 @@ public class Animation implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         background.render(g, frameWidth, frameHeight, this.time, this.speed);
         airplane.render(g, frameWidth, frameHeight, this.time, this.speed);
+        background.move(speed, frameWidth, frameHeight);
         airplane.move(speed, this.frameWidth, this.frameHeight);
         this.time += this.speed;
         afterRender.run();

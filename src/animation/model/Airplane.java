@@ -52,24 +52,24 @@ public class Airplane implements Animatable {
     public void move(double speed, int frameWidth, int frameHeight) {
         switch (getPhaseOfFlight(frameWidth, frameHeight)) {
             case "Takeoff":
-                takeoff(speed, frameWidth, frameHeight);
+                takeoff(speed);
                 break;
             case "Climb":
-                climb(speed, frameWidth, frameHeight);
+                climb();
                 break;
             case "Cruise":
-                cruise(speed, frameWidth, frameHeight);
+                cruise();
                 break;
             case "Descent":
-                descent(speed, frameWidth, frameHeight);
+                descent();
                 break;
             case "Landing":
-                landing(speed, frameWidth, frameHeight);
+                landing(frameHeight);
                 break;
         }
     }
 
-    private void takeoff(double speed, int frameWidth, int frameHeight) {
+    private void takeoff(double speed) {
         SPEED += TAKEOFF_ACCELERATION * MASS * speed;
         if (SPEED >= TAKEOFF_TARGET_SPEED) {
             y -= (int) (SPEED * Math.sin(Math.toRadians(TAKEOFF_ANGLE))/50);
@@ -79,18 +79,18 @@ public class Airplane implements Animatable {
         }
     }
 
-    private void cruise(double speed, int frameWidth, int frameHeight) {
+    private void cruise() {
         x -= (int) (SPEED * Math.cos(Math.toRadians(0))/100);
     }
 
-    private void descent(double speed, int frameWidth, int frameHeight) {
+    private void descent() {
         y += (int) (SPEED * Math.sin(Math.toRadians(2))/10);
         x -= (int) (SPEED * Math.cos(Math.toRadians(2))/100);
     }
 
-    private void landing(double speed, int frameWidth, int frameHeight) {
+    private void landing(int frameHeight) {
         if (SPEED > LANDING_SPEED) {
-            SPEED -= 1;
+            SPEED -= 2;
         }
         if (y >= frameHeight - 60) {
             if (SPEED > 0) {
@@ -98,8 +98,7 @@ public class Airplane implements Animatable {
             }
             y = frameHeight - 60;
         } else {
-            int descend = (int) (SPEED * Math.sin(Math.toRadians(7)) / 20);
-            System.out.println(descend);
+            int descend = (int) (SPEED * Math.sin(Math.toRadians(7)) / 18);
             y += descend;
         }
         if (x < 50) {
@@ -110,7 +109,7 @@ public class Airplane implements Animatable {
         }
     }
 
-    private void climb(double speed, int frameWidth, int frameHeight) {
+    private void climb() {
         y -= (int) (SPEED * Math.sin(Math.toRadians(15))/50);
         x -= (int) (SPEED * Math.cos(Math.toRadians(15))/100);
     }
@@ -126,7 +125,7 @@ public class Airplane implements Animatable {
         if (y > frameHeight - 150 && x < frameWidth/2) {
             phase = "Landing";
         }
-        if (y <= frameHeight - 150 && x < frameWidth/3) {
+        if (y <= frameHeight - 150 && x < frameWidth/3.5) {
             phase = "Descent";
         }
 
