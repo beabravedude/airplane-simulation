@@ -1,3 +1,4 @@
+// sets animation variables that will not change
 public class Constants {
 
     // do not touch these, they will break the airplane path and scaling

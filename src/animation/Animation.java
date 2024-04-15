@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// animation class
 public class Animation implements ActionListener {
 
     private final Graphics g;
@@ -23,6 +24,7 @@ public class Animation implements ActionListener {
     private final Airplane airplane;
 
     public Animation(Graphics g, int frameWidth, int frameHeight, double speed, Runnable afterRender) {
+        // intialize the background and airplane along with animation variables
         this.g = g;
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
@@ -35,6 +37,7 @@ public class Animation implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // render the airplane and background and move them accordingly
         background.render(g, frameWidth, frameHeight, this.time, this.speed);
         airplane.render(g, frameWidth, frameHeight, this.time, this.speed);
         background.move(speed, frameWidth, frameHeight);
