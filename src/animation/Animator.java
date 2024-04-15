@@ -3,7 +3,6 @@ package animation;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.lang.invoke.ConstantCallSite;
 
 // runs the actual timer for the animation
 public class Animator extends JPanel {
