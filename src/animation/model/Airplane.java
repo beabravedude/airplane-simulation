@@ -29,6 +29,10 @@ public class Airplane implements Animatable {
     public void render(Graphics g, int frameWidth, int frameHeight, double time, double speed) {
         g.setColor(Color.RED);
         g.fillOval(x, y - 20, 50, 20);
+        g.setColor(Color.WHITE);
+        g.fillOval(x+10, y-10, 30, 5);
+        g.setColor(Color.BLUE);
+        g.fillPolygon(new int[]{x+35, x + 50, x + 50}, new int[]{y - 10, y - 10, y - 30}, 3);
 
 
         if (y > frameHeight - 100) {
@@ -42,7 +46,7 @@ public class Airplane implements Animatable {
         g.setFont(new Font("Arial", Font.PLAIN, 20));
         g.drawString("Altitude: " + (frameHeight - y), 10, 20);
         g.drawString("Distance: " + (frameWidth - x), 10, 40);
-        g.drawString("Speed: " + SPEED, 10, 60);
+        g.drawString("Speed: " + String.format("%.2f", SPEED), 10, 60);
         g.drawString("Time: " + time, 10, 80);
         g.drawString("Phase: " + getPhaseOfFlight(frameWidth, frameHeight), 10, 100);
 

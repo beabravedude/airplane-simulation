@@ -52,6 +52,14 @@ public class Background implements Animatable {
         g.fillRect(0, frameHeight - 50, 200, 100);
         g.fillRect(frameWidth - 200, frameHeight - 50, 200, 100);
 
+        // add runway centerlines for both of them
+        g.setColor(Color.WHITE);
+        g.fillRect(25, frameHeight - 25, 50, 5);
+        g.fillRect(125, frameHeight - 25, 50, 5);
+
+        g.fillRect(frameWidth - 100, frameHeight - 25, 50, 5);
+        g.fillRect(frameWidth - 175, frameHeight - 25, 50, 5);
+
         g.setColor(Color.DARK_GRAY);
         g.fillRect(frameWidth - 200, frameHeight - 200, 50, 150);
         g.fillRect(frameWidth - 225, frameHeight - 200, 100, 50);
